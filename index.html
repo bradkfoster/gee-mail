@@ -2,17 +2,131 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+        <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+
+
+
+    
+ 
+
+
+
+function startMail(){
+        for (i=0; i< window.geemails.length; i++){
+        	var newDiv = document.createElement('div');
+        	newDiv.className = "mailBox"
+            
+            newDiv.addEventListener("click", showMe);
+        	newDiv.innerHTML = window.geemails[i].sender + "<br />"+ geemails[i].date + "<br />"+ window.geemails[i].subject;
+        	
+            var body = document.createElement('div');
+            body.className = 'bodyMessages';
+            body.style.display = 'none';
+            body.innerHTML = geemails[i].body;
+
+
+            newDiv.appendChild(body);
+            main.appendChild(newDiv);
+
+          
+        	
+
+
+	}
+        }
+        startMail();
+
+
         
+    var x = 10;
+
+    function mailGen(){
+    var newNew = getNewMessage();
+    var nextDiv = document.createElement('div');
+    nextDiv.className = 'newBox';
+    nextDiv.addEventListener("click", showMe);
+    nextDiv.innerHTML = newNew.sender + "<br />"+ newNew.date + "<br />"+ newNew.subject;
+
+     var nextBody = document.createElement('div');
+            nextBody.className = 'bodyMessages';
+            nextBody.style.display = 'none';
+            nextBody.innerHTML = "hello";
+
+
+           nextDiv.appendChild(nextBody);
+            main.appendChild(nextDiv);
+
+
+            x += 1;
+            inboxcount.innerHTML = x + " New Messages";
+
+
+    }
+
+setInterval(mailGen, 2000);
+
+
+
+
+
+
+
+
+
+
+
+
+function showMe(){
+  var messages = this.querySelectorAll(".bodyMessages")[0];
+  if (messages.style.display === "none"){
+    messages.style.display = "block";
+  } else {
+    messages.style.display = "none";
+  }
+}
+
+
+
+var inboxcount = document.getElementById('inboxCounter');
+inboxCounter.innerHTML = x + " New Messages";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
       };
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
+		<div id="div"> 
+           <img src="https://images.sftcdn.net/images/t_optimized,f_auto/p/a73c9292-e15f-11e6-9272-00163ec9f5fa/1774429336/easymail-for-gmail-logo.png" alt="" id="headerPic">
+            <h1 id="header">Welcome to GeeMail</h1>
+            <p id="inboxCounter"></p>
+        </div>
+        <div class="container" id="main">
+			
 		</div>
 	</body>
 </html>
